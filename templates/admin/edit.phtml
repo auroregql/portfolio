@@ -1,0 +1,28 @@
+<section class="presentation-card" style="max-width: 700px; margin: 2rem auto;">
+    <h3>Modifier le projet : <?= htmlspecialchars($project['title']) ?></h3>
+    
+    <form action="index.php?page=admin-edit" method="POST" class="admin-form">
+        <input type="hidden" name="id" value="<?= $project['id'] ?>">
+
+        <label>Titre</label>
+        <input type="text" name="title" value="<?= htmlspecialchars($project['title']) ?>" required>
+
+        <label>Accroche (Short description)</label>
+        <input type="text" name="short_description" value="<?= htmlspecialchars($project['short_description']) ?>">
+
+        <label>Description complète</label>
+        <textarea name="description" rows="5"><?= htmlspecialchars($project['description']) ?></textarea>
+
+        <label>Nom de l'image (ex: photo.jpg)</label>
+        <input type="text" name="image" value="<?= htmlspecialchars($project['image']) ?>">
+
+        <label>Lien GitHub</label>
+        <input type="url" name="link_github" value="<?= htmlspecialchars($project['link_github']) ?>">
+
+        <label>Lien Site Web</label>
+        <input type="url" name="link_site" value="<?= htmlspecialchars($project['link_site']) ?>">
+
+        <button type="submit" class="btn btn-green">Mettre à jour</button>
+        <a href="index.php?page=admin" style="margin-left: 10px;">Annuler</a>
+    </form>
+</section>

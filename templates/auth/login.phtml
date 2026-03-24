@@ -1,0 +1,17 @@
+<section class="presentation-card" style="max-width: 500px; margin: 4rem auto;">
+    <h3>Connexion Admin</h3>
+    
+    <?php if(isset($error)): ?>
+        <p style="color: #ff4d4d;"><?php echo $error; ?></p>
+    <?php endif; ?>
+
+    <form action="index.php?page=login" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <input type="email" name="email" placeholder="Email" required 
+               style="padding: 1rem; border-radius: 20px; border: 1px solid #ddd;">
+        
+        <input type="password" name="password" placeholder="Mot de passe" required 
+               style="padding: 1rem; border-radius: 20px; border: 1px solid #ddd;">
+        
+        <button type="submit" class="btn btn-green">Se connecter</button>
+    </form>
+</section>

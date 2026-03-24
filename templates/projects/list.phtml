@@ -1,0 +1,24 @@
+<h1>Mes Projets</h1>
+
+<div class="projects-grid">
+    <?php if (empty($projects)): ?>
+        <p>Aucun projet à afficher pour le moment.</p>
+    <?php else: ?>
+        <?php foreach ($projects as $project): ?>
+            <div class="project-card">
+                
+                <img src="assets/img/<?php echo $project['image']; ?>" alt="<?php echo $project['title']; ?>">
+                
+                <div class="content">
+                    <h2><?php echo $project['title']; ?></h2>
+                    <p><?php echo $project['short_description']; ?></p>
+                    
+                    <a href="index.php?page=details&id=<?php echo $project['id']; ?>" class="btn">
+                        Voir les détails
+                    </a>
+                </div>
+
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

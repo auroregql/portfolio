@@ -1,0 +1,29 @@
+<section class="admin-bubble">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h1>Gestion des Projets</h1>
+        <a href="index.php?page=admin-add" class="btn btn-green">+ Nouveau Projet</a>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="text-align: left; border-bottom: 2px solid var(--accent-green);">
+                <th style="padding: 1rem;">Titre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($projects as $project): ?>
+            <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                <td style="padding: 1rem; font-weight: 600;"><?php echo $project['title']; ?></td>
+                <td>
+                    <a href="index.php?page=admin-edit&id=<?php echo $project['id']; ?>" style="color: var(--accent-orange); margin-right: 15px;">Modifier</a>
+                    
+                    <a href="index.php?page=admin-delete&id=<?php echo $project['id']; ?>" 
+                       onclick="return confirm('Supprimer ce projet ?')" 
+                       style="color: #ff4d4d;">Supprimer</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

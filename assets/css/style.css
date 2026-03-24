@@ -1,0 +1,302 @@
+/* --- 1. CONFIGURATION & VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+:root {
+    --bg-main: #ffffff;           /* Fond de page blanc */
+    --bg-bubble: #f8faf9;         /* Fond de bulle (gris-vert très clair) */
+    --text-dark: #1a1f1d;         /* Texte principal */
+    --text-light: #60706a;        /* Texte secondaire */
+    
+    /* Dégradés signatures */
+    --grad-green: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    --grad-orange: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+    --grad-bubble: linear-gradient(145deg, #f8faf9 0%, #ffffff 100%);
+    
+    --radius: 40px;               /* L'arrondi signature de ton image */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- 2. NAVIGATION --- */
+header {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 600;
+    margin: 0 1rem;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: #22c55e;
+}
+
+/* --- 3. STRUCTURE DES BULLES --- */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Espace entre les bulles */
+}
+
+/* Style commun à toutes les "bulles" de contenu */
+.profile-header, 
+.presentation-card, 
+.project-card, 
+.project-detail-container {
+    background: var(--grad-bubble);
+    border-radius: var(--radius);
+    padding: 4rem;
+    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: var(--shadow);
+}
+
+/* --- 4. PAGE ACCUEIL (HOME) --- */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.profile-pic {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--radius);
+    object-fit: cover;
+    transform: rotate(-2deg); /* Effet organique */
+    border: 4px solid #ffffff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.profile-info h1 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fb923c; /* Orange */
+    margin-bottom: 1rem;
+}
+
+.profile-info h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.presentation-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.presentation-card h3 {
+    grid-column: 1 / -1;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #22c55e;
+    font-weight: 700;
+}
+
+/* --- 5. GRILLE DE PROJETS (LIST) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    padding: 0; /* On reset le padding pour l'image */
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.project-card .content {
+    padding: 2rem;
+}
+
+/* --- 6. BOUTONS --- */
+.home-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-green {
+    background: var(--grad-green);
+    color: white;
+}
+
+.btn-orange-outline {
+    background: transparent;
+    border: 2px solid #fb923c;
+    color: #fb923c;
+}
+
+.btn-green:hover {
+    box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+    transform: scale(1.03);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 850px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1.5rem;
+    }
+    
+    .presentation-card {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+    }
+    
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+        transform: none;
+    }
+
+    .profile-info h2 {
+        font-size: 2rem;
+    }
+}
+
+/* --- 7. FOOTER --- */
+footer {
+    max-width: 1100px;
+    margin: 2rem auto 4rem auto; /* Centré horizontalement, avec de la marge en bas */
+    padding: 2.5rem;
+    text-align: center; /* Centre le texte à l'intérieur */
+    
+    /* On reprend le style des "bulles" */
+    background: var(--grad-bubble);
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: var(--shadow);
+}
+
+footer p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Optionnel : si tu veux ajouter des petits liens ou icônes dans le footer */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: #22c55e;
+    transform: translateY(-3px);
+}
+
+
+/* --- 8. FORMULAIRES ADMIN (STYLE BULLES) --- */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.admin-form input, 
+.admin-form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+/* Effet au clic sur les champs */
+.admin-form input:focus, 
+.admin-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.1);
+}
+
+/* Adaptation pour le bouton dans le formulaire */
+.admin-form .btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+}

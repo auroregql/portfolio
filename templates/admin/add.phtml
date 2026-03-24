@@ -1,0 +1,29 @@
+<section class="admin-bubble admin-form">
+    <h1>Ajouter un nouveau projet</h1>
+    <hr>
+    
+    <form action="index.php?page=admin-add" method="POST">
+        <label for="title">Titre du projet</label>
+        <input type="text" id="title" name="title" placeholder="Ex: Mon superbe Portfolio" required>
+
+        <label for="short_description">Accroche (description courte)</label>
+        <input type="text" id="short_description" name="short_description" placeholder="Ex: Un site réalisé en PHP MVC">
+
+        <label for="description">Description complète</label>
+        <textarea id="description" name="description" rows="5" placeholder="Détaillez le projet ici..."></textarea>
+
+        <label for="image">Nom de l'image</label>
+        <input type="text" id="image" name="image" placeholder="Ex: projet1.jpg">
+
+        <label for="link_github">Lien GitHub</label>
+        <input type="url" id="link_github" name="link_github" placeholder="https://github.com/...">
+
+        <label for="link_site">Lien du site (Live)</label>
+        <input type="url" id="link_site" name="link_site" placeholder="https://...">
+
+        <div style="margin-top: 2rem;">
+            <button type="submit" class="btn btn-green">Créer le projet</button>
+            <a href="index.php?page=admin" style="margin-left: 15px; color: var(--text-light);">Annuler</a>
+        </div>
+    </form>
+</section>
